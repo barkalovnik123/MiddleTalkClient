@@ -1,0 +1,178 @@
+.base-container {
+    -fx-background-image: url('../purple_bg.jpg');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.base-input {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #2a2d35, #1e2128);
+    -fx-background-radius: 1px;
+
+    -fx-border-color: rgba(255, 255, 255, 0.08);
+    -fx-border-radius: 1px;
+    -fx-border-width: 1px;
+
+    -fx-text-fill: #e2e8f0;
+    -fx-prompt-text-fill: #64748b;
+    -fx-highlight-fill: #3b82f6;
+    -fx-highlight-text-fill: #ffffff;
+
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 4, 0.3, 0, 2);
+    -fx-padding: 8px 12px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+.base-label {
+    -fx-text-fill: #e2e8f0;
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 14px;
+}
+
+.base-button {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #2a2d35, #1e2128);
+    -fx-background-radius: 1px;
+
+    -fx-border-color: rgba(255, 255, 255, 0.08);
+    -fx-border-radius: 1px;
+    -fx-border-width: 1px;
+
+    -fx-text-fill: #e2e8f0;
+
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 4, 0.3, 0, 2);
+    -fx-padding: 8px 12px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* 🎯 ОСНОВНОЙ КОНТЕЙНЕР + ВЫБРАННАЯ ЯЧЕЙКА */
+.base-combo-box,
+.base-combo-box .list-cell {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #2a2d35, #1e2128);
+    -fx-background-radius: 1px;
+    -fx-border-color: rgba(255, 255, 255, 0.08);
+    -fx-border-radius: 1px;
+    -fx-border-width: 1px;
+    -fx-text-fill: #e2e8f0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 4, 0.3, 0, 2);
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-background-insets: 0; /* Убирает нативные отступы фона, чтобы градиент покрыл всё */
+}
+
+/* 🔄 СОСТОЯНИЯ */
+.base-combo-box:hover,
+.base-combo-box:hover .list-cell {
+    /*-fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #323640, #23262e);*/
+    /*-fx-border-color: rgba(255, 255, 255, 0.15);*/
+}
+
+.base-combo-box:focused,
+.base-combo-box:focused .list-cell {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #2e323b, #1f2229);
+    /*-fx-border-color: #3b82f6;*/
+    /*-fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.4), 8, 0.4, 0, 4);*/
+}
+
+.base-combo-box:disabled,
+.base-combo-box:disabled .list-cell {
+    -fx-opacity: 0.6;
+    -fx-background-color: #1a1d24;
+}
+
+/* 🔽 КНОПКА СТРЕЛКИ */
+.base-combo-box .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0 6px;
+}
+.base-combo-box .arrow {
+    -fx-background-color: #94a3b8; /* Цвет стрелки */
+}
+.base-combo-box:hover .arrow {
+    -fx-background-color: #e2e8f0;
+}
+
+/* 📦 ВЫПАДАЮЩИЙ СПИСОК (POPUP) */
+/*.combo-box-popup > .list-view {*/
+/*    -fx-background-color: #1e2128;*/
+/*    -fx-border-color: rgba(255, 255, 255, 0.08);*/
+/*    -fx-border-width: 1px;*/
+/*    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 12, 0.3, 0, 5);*/
+/*    -fx-background-radius: 2px;*/
+/*    -fx-padding: 4px;*/
+/*}*/
+
+.combo-box-popup .list-cell {
+    -fx-background-color: transparent;
+    -fx-background-radius: 1px;
+    -fx-border-radius: 0;
+    -fx-border-width: 0;
+    -fx-effect: null;
+    -fx-text-fill: #e2e8f0;
+    -fx-padding: 8px 10px;
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-font-size: 14px;
+}
+
+.combo-box-popup .list-cell:hover {
+    /*-fx-background-color: rgba(59, 130, 246, 0.15);*/
+    /*-fx-text-fill: #60a5fa;*/
+}
+
+.combo-box-popup .list-cell:focused,
+.combo-box-popup .list-cell:selected {
+    /*-fx-background-color: rgba(59, 130, 246, 0.25);*/
+    /*-fx-text-fill: #ffffff;*/
+    -fx-font-weight: bold;
+}
+
+/* 🎯 ОСНОВНОЙ КОНТЕЙНЕР */
+.base-textarea {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #2a2d35, #1e2128);
+    -fx-text-fill: #e2e8f0;
+    -fx-background-insets: 0; /* Убирает нативные "слои" JavaFX */
+    -fx-background-radius: 1px;
+    -fx-border-color: rgba(255, 255, 255, 0.08);
+    -fx-border-radius: 1px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 4, 0.3, 0, 2);
+    -fx-padding: 0; /* Отступы задаём внутри .content */
+}
+
+/* 📝 ВНУТРЕННЯЯ ОБЛАСТЬ ТЕКСТА */
+.base-textarea .content {
+    -fx-background-color: transparent; /* Пропускает фон контейнера */
+    -fx-text-fill: #e2e8f0;
+    -fx-highlight-fill: #3b82f6;
+    -fx-highlight-text-fill: #ffffff;
+    -fx-prompt-text-fill: #64748b;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+    -fx-padding: 8px 12px;
+}
+
+.base-textarea .scroll-pane {
+    -fx-background-color: transparent;
+}
+.base-textarea .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.base-textarea:hover {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #323640, #23262e);
+    -fx-border-color: rgba(255, 255, 255, 0.15);
+}
+
+.base-textarea:focused {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #2e323b, #1f2229);
+    -fx-border-color: #3b82f6;
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.4), 8, 0.4, 0, 4);
+}
+
+.base-textarea:disabled {
+    -fx-opacity: 0.6;
+    -fx-background-color: #1a1d24;
+    -fx-border-color: rgba(255, 255, 255, 0.03);
+}

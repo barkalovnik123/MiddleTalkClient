@@ -1,8 +1,9 @@
-package org.maverick.middletalkclient;
+package org.maverick.middletalkclient.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import org.maverick.middletalkclient.NavigationController;
 import org.maverick.middletalkclient.services.DataManager;
 
 public class AuthController {

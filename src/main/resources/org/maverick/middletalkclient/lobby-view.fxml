@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
 
-</AnchorPane>
+<BorderPane styleClass="base-container" stylesheets="@css/base.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.maverick.middletalkclient.controllers.LobbyController">
+   <center>
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="600.0" spacing="20.0" stylesheets="@./css/base.css">
+      
+          <ComboBox fx:id="conferenceCombo" disable="true" prefWidth="250" promptText="Выберите конференцию..." styleClass="base-combo-box" />
+          <Button onAction="#onConnectButtonClick" styleClass="base-button">Подключиться</Button>
+      </VBox>
+   </center>
+   <bottom>
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" style="-fx-padding: 10px 10px;" BorderPane.alignment="CENTER">
+        <buttons>
+          <Button mnemonicParsing="false" styleClass="base-button" text="Создать конференцию" onAction="#onCreateConferenceButtonClick"/>
+        </buttons>
+      </ButtonBar>
+   </bottom>
+</BorderPane>

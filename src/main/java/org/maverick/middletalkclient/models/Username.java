@@ -1,4 +1,6 @@
 package org.maverick.middletalkclient.models;
 
-public record Username() {
+public record Username(
+        String username
+) {
 }

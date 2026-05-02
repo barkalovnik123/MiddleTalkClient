@@ -1,0 +1,26 @@
+.code-area {
+    -fx-background-color: #1e2128;
+    -fx-font-family: "JetBrains Mono", "Consolas", monospace;
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
+    -fx-fill: #fff;
+}
+
+.code-area .paragraph-box {
+    -fx-padding: 2px 0;
+}
+
+.code-area .caret {
+    -fx-stroke: #60a5fa;
+    -fx-stroke-width: 2px;
+}
+
+/* Классы, которые подставляет лексер */
+.keyword { -fx-fill: #c678dd; -fx-font-weight: bold; }
+.string  { -fx-fill: #98c379; }
+.comment { -fx-fill: #5c6370; -fx-font-style: italic; }
+.identifier {-fx-fill: #fff;}
+.operator {-fx-fill: #fff;}
+.number {-fx-fill: aqua;}
+.char {-fx-fill: orange;}
+.punctuation {-fx-fill: white;}
