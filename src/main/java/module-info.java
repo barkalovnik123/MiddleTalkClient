@@ -5,6 +5,7 @@ module org.maverick.middletalkclient {
     requires com.fasterxml.jackson.databind;
     requires org.java_websocket;
     requires org.fxmisc.richtext;
+    requires java.desktop;
 
 
     opens org.maverick.middletalkclient to javafx.fxml;

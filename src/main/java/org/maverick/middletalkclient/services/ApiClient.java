@@ -190,4 +190,26 @@ public class ApiClient {
 
     }
 
+    public static String sendRegisterRequest(String username, String password) throws IOException, InterruptedException {
+        String json = "{\"username\":\"" + username  + "\",\"password\":\"" + password+ "\"}";
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(domain + "/register"))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(json))
+                .build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        if (response.statusCode() >= 300) {
+            String err_msg =
+                    response.statusCode() >= 500 ? "Ошибка на сервере" :
+                            response.statusCode() >= 400 ? "Нет такого пользователя или неверный пароль" :
+                                    "Ошибка";
+            throw new AuthError(err_msg);
+        }
+
+        return response.body();
+    }
+
 }

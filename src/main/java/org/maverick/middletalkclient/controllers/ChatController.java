@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.StackPane;
 import org.maverick.middletalkclient.State;
+import org.maverick.middletalkclient.builders.MessageBuilder;
 import org.maverick.middletalkclient.component.SyntaxEditor;
 import org.maverick.middletalkclient.models.Conference;
 import org.maverick.middletalkclient.models.Message;
@@ -18,6 +19,14 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Objects;
 
+/*
+* Добавить возможность смотреть статы по конференции
+* Раскрасить юзеров в TextArea
+* И отправку сделать каждые n секунд
+* DIA / Draw.io / UltimateIDE
+* GraphWidth юзнут
+* */
+
 public class ChatController {
 
     private final WsClient wsService = new WsClient();
@@ -25,6 +34,9 @@ public class ChatController {
     private final SyntaxEditor editor = new SyntaxEditor();
 
     private boolean codeAreaEditedByCode = false;
+
+    private long timer = System.nanoTime();
+    private boolean doIGetCodeFirstTime = true;
 
     @FXML private Label statusLabel;
     @FXML private TextArea messageArea;
@@ -37,13 +49,10 @@ public class ChatController {
 
         State.getMessageList().forEach(message -> {
                 messageArea.appendText(
-                        "[" + message.createdAt() + "] " +
-                                message.username() + ": " +
-                                message.content() + "\n"
+                        MessageBuilder.buildStringMessage(message)
                 );
         });
 
-        // Обработка входящих сообщений
         wsService.setOnMessage(rawJson -> {
             ObjectMapper mapper = new ObjectMapper();
             Message message;
@@ -55,12 +64,19 @@ public class ChatController {
 
             if (Objects.equals(message.type(), "text")) {
                 messageArea.appendText(
-                        "[" + message.createdAt() + "] " +
-                                message.username() + ": " +
-                                message.content() + "\n"
+                        MessageBuilder.buildStringMessage(message)
                 );
             } else {
-                if (!Objects.equals(message.username(), State.getUser().username())) {
+                if (doIGetCodeFirstTime &&
+                        !Objects.equals(message.content(), "Подключение установлено")) {
+                    codeAreaEditedByCode = true;
+                    editor.getCodeArea().clear();
+                    editor.getCodeArea().appendText(message.content());
+                    codeAreaEditedByCode = false;
+                    doIGetCodeFirstTime = false;
+                }
+                if (!Objects.equals(message.username(), State.getUser().username()) &&
+                        !Objects.equals(message.content(), "Подключение установлено")) {
                     codeAreaEditedByCode = true;
                     editor.getCodeArea().clear();
                     editor.getCodeArea().appendText(message.content());
@@ -92,6 +108,8 @@ public class ChatController {
             statusLabel.setText("❌ Нет ID конференции");
         }
 
+        if (State.getUser().id() != State.getCurrentConference().ownerId())
+            editorContainer.setDisable(true);
 
         editorContainer.getChildren().add(editor.getCodeArea());
 
@@ -99,7 +117,7 @@ public class ChatController {
         editor.getCodeArea().appendText("public class Main {\n    public static void main(String[] args) {\n        // TODO\n    }\n}");
 
         editor.getCodeArea().textProperty().addListener((obs, oldText, newText) -> {
-            if (codeAreaEditedByCode) return;
+            if (codeAreaEditedByCode) return; // Хитрость во избежание бесконечной цепочки запросов :)
             System.out.println("Что-то новенькое:");
             IO.println(newText); // ваша логика
 
@@ -121,9 +139,6 @@ public class ChatController {
             } catch (JsonProcessingException e) {
                 throw new RuntimeException(e);
             }
-
-//            String json = "{\"username\":\"" + username  + "\",\"conference_id\":\"" +
-//                    conference_id + "\",\"type\":\"" + type + "\",\"content\":\"" + content + "\"}";
 
             wsService.send(json);
 

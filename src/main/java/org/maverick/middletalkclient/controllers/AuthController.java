@@ -28,4 +28,10 @@ public class AuthController {
 
         }
     }
+
+    public void onCreateAccountButtonClick() {
+
+        NavigationController.navigateTo("register-view.fxml");
+
+    }
 }

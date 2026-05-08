@@ -1,0 +1,115 @@
+/* 🔹 Контейнер чата */
+.chat-list {
+    -fx-background-color: #1e2128;
+    -fx-padding: 10px;
+    -fx-spacing: 8px;
+}
+
+.chat-list .scroll-bar:vertical {
+    -fx-background-color: #1e2128;
+    -fx-pref-width: 10px;
+}
+.chat-list .scroll-bar:vertical .thumb {
+    -fx-background-color: #4b5563;
+    -fx-background-radius: 5px;
+}
+.chat-list .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #6b7280;
+}
+
+/* 🔹 Ячейка сообщения (общие стили) */
+.chat-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 4px 0;
+}
+
+/* 🔹 Пузырь сообщения */
+.message-bubble {
+    -fx-background-radius: 12px;
+    -fx-padding: 10px 14px;
+    -fx-max-width: 70%;
+    -fx-spacing: 6px;
+}
+
+/* 🔹 Чужие сообщения (слева) */
+.message-bubble.other {
+    -fx-background-color: #374151;
+    -fx-alignment: center-left;
+}
+
+/* 🔹 Свои сообщения (справа) */
+.message-bubble.own {
+    -fx-background-color: #3b82f6;
+    -fx-alignment: center-right;
+}
+
+/* 🔹 Системные сообщения (по центру, серые) */
+.message-bubble.system {
+    -fx-background-color: rgba(75, 85, 99, 0.6);
+    -fx-alignment: center;
+    -fx-max-width: 90%;
+}
+
+/* 🔹 Текст сообщения */
+.message-text {
+    -fx-text-fill: #e2e8f0;
+    -fx-wrap-text: true;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", system-ui, sans-serif;
+}
+.message-bubble.own .message-text {
+    -fx-text-fill: #ffffff;
+}
+.message-bubble.system .message-text {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 13px;
+    -fx-font-style: italic;
+}
+
+/* 🔹 Заголовок: аватар + имя + время */
+.message-header {
+    -fx-spacing: 8px;
+    -fx-alignment: center-left;
+}
+.message-bubble.own .message-header {
+    -fx-alignment: center-right;
+}
+
+/* 🔹 Аватар (круг, первая буква имени) */
+.avatar {
+    -fx-background-color: #6366f1;
+    -fx-background-radius: 50%;
+    -fx-pref-width: 32px;
+    -fx-pref-height: 32px;
+    -fx-alignment: center;
+}
+.avatar .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+/* 🔹 Имя пользователя */
+.username {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 12px;
+    -fx-font-weight: 500;
+}
+.message-bubble.own .username {
+    -fx-text-fill: rgba(255,255,255,0.8);
+}
+
+/* 🔹 Время */
+.timestamp {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 11px;
+}
+.message-bubble.own .timestamp {
+    -fx-text-fill: rgba(255,255,255,0.7);
+}
+
+/* 🔹 Анимация появления нового сообщения */
+.chat-cell:filled {
+    -fx-opacity: 0;
+    -fx-translate-y: 10px;
+}
