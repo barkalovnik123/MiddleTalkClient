@@ -1,4 +1,4 @@
-/* 🔹 Контейнер чата */
+
 .chat-list {
     -fx-background-color: #1e2128;
     -fx-padding: 10px;
@@ -17,7 +17,6 @@
     -fx-background-color: #6b7280;
 }
 
-/* 🔹 Ячейка сообщения (общие стили) */
 .chat-cell {
     -fx-background-color: transparent;
     -fx-padding: 4px 0;
